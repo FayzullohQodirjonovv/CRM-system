@@ -35,6 +35,7 @@ export function useLogin() {
       localStorage.setItem("access_token", res.data.access_token);
       toast.success(" Kirish muvaffaqiyatli!");
       router.push("/Dashboard");
+
     },
     onError: (err: any) => {
       toast.error(err.message || "Login xato!");

@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Plus, Search } from "lucide-react";
+import { Plus, Search, Edit, Trash2 } from "lucide-react";
 
 export default function ManagersPage() {
   const [search, setSearch] = useState("");
@@ -16,28 +16,28 @@ export default function ManagersPage() {
   );
 
   return (
-    <div className="p-6 text-gray-100 bg-[#0d0d0d] min-h-screen">
+    <div className="p-4 md:p-6 bg-[#0d0d0d] text-white min-h-screen">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-3">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
         <h1 className="text-2xl font-semibold">Menagerlar ro‘yxati</h1>
 
-        <div className="flex items-center gap-2">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 w-full sm:w-auto">
           {/* Search input */}
-          <div className="relative">
+          <div className="relative w-full sm:w-auto">
             <Search className="absolute left-3 top-2.5 text-gray-400" size={18} />
             <input
               type="text"
               placeholder="Qidirish..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="bg-gray-800 text-gray-200 pl-9 pr-4 py-2 rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="bg-gray-800 text-gray-200 pl-9 pr-4 py-2 rounded-lg w-full sm:w-64 focus:outline-none focus:ring-1 focus:ring-blue-500"
             />
           </div>
 
           {/* Add button */}
           <button
             onClick={() => alert("Yangi meneger qo‘shish formasi ochiladi")}
-            className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 transition px-4 py-2 rounded-lg font-medium"
+            className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 transition px-4 py-2 rounded-lg font-medium w-full sm:w-auto justify-center"
           >
             <Plus size={18} /> Qo‘shish
           </button>
@@ -66,18 +66,18 @@ export default function ManagersPage() {
                   <td className="px-4 py-3">{i + 1}</td>
                   <td className="px-4 py-3">{m.name}</td>
                   <td className="px-4 py-3">{m.role}</td>
-                  <td className="px-4 py-3">{m.phone}</td>
-                  <td className="px-4 py-3 text-right">
-                    <button className="text-blue-400 hover:underline mr-3">
-                      Tahrirlash
+                  <td className="px-4 py-3 break-words">{m.phone}</td>
+                  <td className="px-4 py-3 text-right flex flex-wrap justify-end gap-2">
+                    <button className="flex items-center gap-1 text-blue-400 hover:text-blue-600 transition">
+                      <Edit size={16} /> Tahrirlash
                     </button>
                     <button
                       onClick={() =>
                         setManagers(managers.filter((x) => x.id !== m.id))
                       }
-                      className="text-red-400 hover:underline"
+                      className="flex items-center gap-1 text-red-400 hover:text-red-600 transition"
                     >
-                      O‘chirish
+                      <Trash2 size={16} /> O‘chirish
                     </button>
                   </td>
                 </tr>
