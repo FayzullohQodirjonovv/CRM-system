@@ -1,10 +1,9 @@
 "use client";
 import { useState } from "react";
-import { Button, Input } from "antd";
-import { toast } from "react-toastify";
+import { Button, Input } from "antd"
 import { useLogin } from "../hooks/useloginhook/uselogin";
 import { LoginData } from "@/app/@types";
-
+import toast from "react-hot-toast"; 
 export default function LoginPage() {
   const { mutate, isPending } = useLogin();
   const [form, setForm] = useState<LoginData>({
@@ -14,7 +13,7 @@ export default function LoginPage() {
 
   const handleSubmit = () => {
     if (!form.email || !form.password) {
-      toast.warning("Iltimos, barcha maydonlarni to‘ldiring!");
+      toast.error("Iltimos, barcha maydonlarni to‘ldiring!"); // ✅ to‘g‘ri
       return;
     }
 
